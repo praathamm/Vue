@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="reactive">
+    <div>Hello</div>
+    <div>
+        {{ content }}
+        <input v-model="content">
+
+    </div><br>
+
+    <div v-show="shower" class="box"></div><br>
+    <button @click="displayer()">Presser</button>
+    <div v-if="bucket" class="box"></div>
+    
+
+    <login-form
+
+
+    <script src="https://unpkg.com/vue@latest"></script>
+    <script>
+        const app = Vue.createApp({
+            data: function () {
+                return {
+                    content: 'Its Vue Time',
+                    shower: true,
+                    bucket: false
+                }
+            },
+            methods: {
+                displayer() {
+                    this.bucket = !this.bucket;
+                }
+            }
+        })
+
+app.component('login-form',{
+    template: 
+    <div>
+    <input type="email" />   
+    <input type="password" />   
+    </div>
+    
+})
+
+        app.mount('.reactive');
+    </script>
+</body>
+
+</html>

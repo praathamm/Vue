@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>It's Vue Time </title>
+</head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<body>
+    <div id="app" v-cloak>
+        {{ greeting }}
+
+        <input @keyup.esc="greet()" v-model="greeting" style="width: 100%;"/>
+
+<hr />
+
+<button @click="doer()">Button</button><br>
+<div v-if="varia" class="box"></div>
+<div v-if="variom" class="box2"></div>
+
+    </div>
+    <script src="https://unpkg.com/vue@^3.4.0"></script>
+    <script>
+        let app = Vue.createApp({
+            data: function () {
+                return {
+                    greeting: 'Welcome to the Gas Chamber',
+                    varia: false
+                  
+                }
+            },
+            methods:{
+                doer(){
+                    this.varia=!this.varia
+                },
+
+                greet(){
+this.variom=!this.variom
+
+                }
+            }
+        })
+        app.mount('#app')
+
+    </script>
+</body>
+
+</html>
