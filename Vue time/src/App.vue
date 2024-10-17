@@ -42,6 +42,7 @@ header {
     display: flex;
     place-items: flex-start;
     flex-wrap: wrap;
+    padding: 10px;
   }
 }
 </style>
