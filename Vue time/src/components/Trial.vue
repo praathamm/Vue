@@ -1,9 +1,12 @@
 <template>
-<h1> My Favourite movie is {{ movie }}</h1>
-
+    <h1> My Favourite movie is {{ movie }}</h1>
+    <button v-on="functiony"> Caller</button>
+    <div class="buttoncaller"></div>
 </template>
 
 <script>
+import { createElementBlock, h } from 'vue';
+
 export default {
     name: 'Trial',
     data() {
@@ -13,11 +16,9 @@ export default {
             movie: 'shrek'
         }
     },
-    methods:
-    function(){
-        return{
-
-
+    methods: {
+        functiony() {
+            return h('div', { class: 'buttoncaller' }, 'Hello brothers');
         }
     }
 }

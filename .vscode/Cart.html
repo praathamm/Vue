@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Website</title>
+    <style>
+        /* Apply a minimalistic style for the entire page */
+        body {
+            font-family: 'Mousedrawn', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: white;
+            color: black;
+            font-weight: 300;
+            overflow-x: hidden;
+        }
+
+
+        @font-face {
+            font-family: 'Mousedrawn';
+            src: url('fonts/Mousedrawn.otf') format('opentype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        /* Header and Fixed Navigation bar */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: white;
+            padding: 20px;
+            box-shadow: none;
+            z-index: 100;
+        }
+
+        header img {
+            cursor: pointer;
+        }
+
+        nav {
+            display: flex;
+            gap: 30px;
+            /* Increased spacing */
+            padding-right: 50px;
+            padding-top: 10px;
+
+        }
+
+        nav a {
+            text-decoration: none;
+            color: black;
+            font-weight: 300;
+            font-size: 22px;
+            /* Increased size */
+            background-color: transparent;
+            padding: 12px 20px;
+            /* Increased padding */
+            border: 1px solid transparent;
+            border-radius: 35px;
+        }
+
+        nav a:hover {
+            box-shadow: 12px 12px 12px rgba(0, 0, 0, 0.1) inset,
+                -10px -10px 10px white inset;
+            /* Optional hover effect */
+        }
+
+        /* Main content layout */
+        .container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 150px;
+            padding-right: 400px;
+        }
+
+        /* Info section */
+        .info {
+            width: calc(100% - 400px);
+            padding: 20px;
+        }
+
+        .info h1 {
+            font-size: 56px;
+            font-weight: 300;
+            margin: 20px 0;
+            color: black;
+        }
+
+        .info p {
+            font-size: 22px;
+            line-height: 1.6;
+            margin: 20px;
+            font-weight: 300;
+            color: black;
+        }
+
+        .adjective {
+            font-family: 'Mousedrawn', cursive;
+            font-weight: 300;
+            font-size: 24px;
+            color: rgb(23, 175, 26);
+        }
+
+        /* Item slideshow */
+        .item-scroller {
+            width: 500px;
+            position: fixed;
+            right: 0;
+            top: 0;
+            margin-top: 150px;
+            /* Make sure the scroller is below the navbar */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: white;
+            padding: 100px;
+        }
+
+        .item {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+
+        }
+
+        .item.active {
+            display: flex;
+        }
+
+        .item img {
+            width: auto;
+            height: auto;
+            max-width: 90%;
+            max-height: 300px;
+        }
+
+        /* Buttons for previous, next, and add to cart using images */
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+            width: 100%;
+            padding: 0 20px;
+        }
+
+        .buttons img {
+            width: 40px;
+            /* Size of the icon buttons */
+            height: 40px;
+            cursor: pointer;
+        }
+
+
+
+        #cartItems {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <img src="cartt.jpg" style="height:120px" onclick="scrollToTop()">
+        <nav>
+            <a href="shopping.html" style="font-size: 33px;">Home</a>
+            <a href="#" style="font-size: 33px;">About Us</a>
+            <a href="#" style="font-size: 33px;">Contact Us</a>
+        </nav>
+    </header>
+
+    <!-- Main descriptive section -->
+    <div class="container">
+        <div class="info">
+            <h1>Your Cart</h1>
+            <div id="cartItems"></div>
+        </div>
+
+        <!-- Item scroller/slideshow -->
+
+
+        <script>
+            function scrollToTop() {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+
+            const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+            const cartItemsContainer = document.getElementById('cartItems');
+
+            // Render cart items
+            cartItems.forEach(itemHTML => {
+                const itemDiv = document.createElement('div');
+                itemDiv.className = 'cartDiv'
+                itemDiv.innerHTML = itemHTML;
+
+                // Remove the price tag (p element) from the cart item
+                const priceTag = itemDiv.querySelector('p');
+                if (priceTag) {
+                    priceTag.remove();
+                }
+
+                cartItemsContainer.appendChild(itemDiv);
+            });
+        </script>
+
+</body>
+
+</html>

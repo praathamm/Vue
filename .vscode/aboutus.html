@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <style>
+        /* Apply a minimalistic style for the entire page */
+        body {
+            font-family: 'Mousedrawn', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: white;
+            color: black;
+            font-weight: 300;
+            overflow-x: hidden;
+        }
+
+        @font-face {
+            font-family: 'Mousedrawn';
+            src: url('fonts/Mousedrawn.otf') format('opentype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        /* Header and Fixed Navigation bar */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: white;
+            padding: 20px;
+            box-shadow: none;
+            z-index: 100;
+        }
+
+        header img {
+            cursor: pointer;
+        }
+
+        nav {
+            display: flex;
+            gap: 30px;
+            padding-right: 50px;
+            padding-top: 10px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: black;
+            font-weight: 300;
+            font-size: 22px;
+            background-color: transparent;
+            padding: 12px 20px;
+            border: 1px solid transparent;
+            border-radius: 35px;
+        }
+
+        nav a:hover {
+            box-shadow: 12px 12px 12px rgba(0, 0, 0, 0.1) inset,
+                -10px -10px 10px white inset;
+        }
+
+        /* Main content layout */
+        .container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 150px;
+            padding-right: 20px;
+        }
+
+        /* Info section (left side) */
+        .info {
+            width: 50%;
+            padding: 20px;
+        }
+
+        .info h1 {
+            font-size: 56px;
+            font-weight: 300;
+            margin: 20px 0;
+            color: black;
+        }
+
+        .info p {
+            font-size: 22px;
+            line-height: 1.6;
+            margin: 20px 0;
+            font-weight: 300;
+            color: black;
+        }
+
+        /* Slideshow container (right side) */
+        .slideshow {
+            width: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: white;
+        }
+
+        /* Slideshow image settings */
+        .slideshow img {
+            width: 90%;
+            height: auto;
+            display: none;
+        }
+
+        .slideshow img.active {
+            display: block;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <img src="cartt.jpg" style="height:120px" onclick="scrollToTop()">
+        <nav>
+            <a href="shopping.html" style="font-size: 33px;">Home</a>
+            <a href="Cart.html" style="font-size: 33px;">Cart</a>
+            <a href="#" style="font-size: 33px;">Contact Us</a>
+        </nav>
+    </header>
+
+    <!-- Main content with two sections -->
+    <div class="container">
+        <!-- Left side content -->
+        <div class="info">
+            <h1>About Us</h1>
+            <p>We are dedicated to maintaining a good workplace environment that promotes efficiency in using resources and ensures the best quality in the materials we produce. Our commitment to sustainability and our team-centric approach drive innovation and excellence in everything we do.</p>
+        </div>
+
+        <!-- Right side image slideshow -->
+        <div class="slideshow">
+            <img src="fashion-designer-illustration-vector.jpg" alt="Placeholder Image 1" class="active">
+            <img src="istockphoto-1237467695-612x612.jpg" alt="Placeholder Image 2">
+            <img src="placeholder3.jpg" alt="Placeholder Image 3">
+        </div>
+    </div>
+
+    <script>
+        // Slideshow functionality
+        const images = document.querySelectorAll('.slideshow img');
+        let currentIndex = 0;
+
+        function showNextImage() {
+            images[currentIndex].classList.remove('active');
+            currentIndex = (currentIndex + 1) % images.length;
+            images[currentIndex].classList.add('active');
+        }
+
+        // Change image every 3 seconds
+        setInterval(showNextImage, 3000);
+    </script>
+
+</body>
+
+</html>
